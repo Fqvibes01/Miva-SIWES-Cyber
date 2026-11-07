@@ -1,0 +1,18 @@
+## Lab 3: DNS Spoofing and ARP Poisoning
+
+Part 1: Packet Sniffing and Interception
+- Key Tools: Wireshark, tcpdump, Ettercap.
+- Mechanism: They put the network card into promiscuous mode to capture all LAN traffic.
+- Captured Data: Unencrypted HTTP packets revealed source/destination IPs, MAC addresses, and sensitive data like session cookies and plaintext passwords.
+
+Part 2 and 3: ARP Poisoning and MITM
+- ARP Poisoning: Used Ettercap to send forged ARP replies to the victim, mapping the router's IP to the attacker's (Kali) MAC address. This places the attacker in the middle (MITM).
+- DNS Spoofing Setup: Hosted a fake bank login page on an Apache server on Kali. Used a DNS spoofing tool to intercept the victim's DNS query for the real bank and reply with the attacker's IP.
+
+Part 4: Analyzing the Impact
+- ARP Vulnerability: ARP has no authentication. Devices blindly trust ARP replies.
+- Impact: The victim is redirected to the fake page without noticing. Since the attacker is the MITM, they capture the victim's typed credentials in plaintext.
+
+Part 5: Prevention and Ethics
+- Prevention: Use DNSSEC to sign DNS records. Use Dynamic ARP Inspection (DAI) on switches. Always use HTTPS to encrypt traffic.
+- Ethics: Penetration testers must have explicit written authorization before performing MITM or spoofing attacks. Accessing data without permission is illegal.

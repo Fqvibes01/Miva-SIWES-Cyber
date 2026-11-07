@@ -1,0 +1,15 @@
+# INT312: Basic Networking Skills for Digital Forensics (Labs 1)
+Name: Farouq
+
+Instructor Note: Due to severe VirtualBox resource limits, my Kali GUI repeatedly crashed and froze when attempting to run Wireshark and Ettercap during Labs 2 and 3. Therefore, I captured the Lab 2 HTTP traffic using the terminal wget -S command. For Lab 3, I was unable to capture the GUI screenshots of the MITM attack, but I have thoroughly documented the theory, commands, and analysis in the report.
+
+## Lab 1: Basic Networking Concepts
+
+Part 1: OSI and TCP/IP Models
+The OSI model has 7 layers (Physical, Data Link, Network, Transport, Session, Presentation, Application). The TCP/IP model condenses this into 4 layers (Network Access, Internet, Transport, Application). 
+
+Part 2: IP Addressing
+IPv4 uses 32-bit addresses, while IPv6 uses 128-bit addresses. Public IPs are routable on the internet, while private IPs (like 192.168.x.x) are used inside local networks and require NAT to access the internet.
+
+Part 3: Network Devices
+Routers operate at Layer 3 (Network) and forward packets between different networks. Switches operate at Layer 2 (Data Link) and forward frames based on MAC addresses within a local network.

@@ -1,0 +1,17 @@
+## Lab 2: Capturing and Analyzing HTTP Traffic
+
+Part 1: Capture HTTP Traffic
+Due to VirtualBox resource limits causing the Kali GUI to crash, I used the terminal to capture traffic instead of Wireshark.
+
+Part 2: Analyze HTTP Traffic
+I used the command wget -S http://example.com in the terminal to generate and capture the HTTP traffic directly. 
+- Request Line: GET / HTTP/1.1
+- Headers: The Host header was example.com, and the User-Agent showed the request came from Wget.
+- Response: The server returned HTTP/1.1 200 OK with a Content-Type of text/html.
+(lab2_screenshot.png)
+
+Part 3: Extracting the Image
+Used wget to download the provided image2.log file. Used xxd image2.log to view the raw hex data. Identified the JPEG magic number (FF D8 FF) to locate the start of the image payload inside the log.
+
+Part 4: Packet Sizes
+Calculated the relationship between the IP Packet Size (Total Length) and the TCP Payload Size (Data). The difference is the overhead (IP header + TCP header + Ethernet header), which is usually 54 bytes.

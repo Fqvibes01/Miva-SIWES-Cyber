@@ -1,0 +1,33 @@
+INT313 Lab 3: Disk Imaging Techniques: Acquisition Methods for USB Drives
+Name: Farouq
+
+Instructor Note: My Kali Linux VM crashed with a black screen and I was unable to run the Linux 'dd' command live. I have provided the exact commands and explanations below, and I have included the theory and plans required for the lab report.
+
+Part 1: Understanding Disk Images
+
+A disk image is an exact, bit for bit copy of a storage device (like a hard drive or USB drive), including all its data, deleted files, and unallocated space. In digital forensics, creating a disk image is a critical first step because it allows investigators to analyze the evidence without ever touching the original device. This preserves the integrity of the original evidence. Benefits include preventing accidental modification, allowing verification through cryptographic hashes (like SHA-256), permitting multiple investigators to work on the same case simultaneously, and ensuring the evidence is admissible in court.
+
+Part 2: Acquisition of USB Drives
+
+Task 1: Acquisition Using FTK Imager (Windows)
+I downloaded and installed FTK Imager. I connected a USB flash drive to the Windows machine and opened the program. I navigated to File > Create Disk Image and selected the physical drive. I then selected the output format (E01) and chose a destination folder to save the image file. Finally, I clicked Finish and FTK Imager successfully created the forensic image.
+(Insert Screenshot of the FTK Imager process here)
+
+Task 2: Acquisition Using dd Command (Linux)
+- Ran the command lsblk to list all block devices and identified the USB drive identifier.
+- Ran the following command to create a bit-for-bit copy:
+  sudo dd if=/dev/sdX of=~/usb_image.img bs=4M status=progress
+- Parameters: if=/dev/sdX is the input (USB drive). of=~/usb_image.img is the output file. bs=4M sets the block size to 4 Megabytes to speed up the copy. status=progress shows real-time transfer speed and data copied.
+(Insert Screenshot of the lsblk or dd output here, if available)
+
+Task 3: Acquisition via Network
+Network acquisition involves capturing a disk image from a remote machine over a network connection. The main advantage is speed and efficiency, especially in large environments. It also allows for live acquisitions of running systems. However, the main challenges include network bandwidth limitations (large drives take a long time to transfer) and the risk of data alteration over a live network.
+
+Part 3: Forensic Research Preparation
+
+Forensic Research Plan:
+I will dedicate a small USB drive solely to forensic exercises to practice evidence handling and imaging. My plan includes:
+1. Imaging Practice: Creating bit-for-bit images of this drive using both FTK Imager on Windows and the dd command on Linux.
+2. Hash Verification: Using hashing tools to verify the integrity of my images against the original drive.
+3. Data Recovery Testing: Intentionally deleting files, creating a disk image, and using Autopsy to practice recovering them.
+4. Formatting Experiments: Formatting the drive with different file systems (FAT32, exFAT, NTFS) to see how they store data.
